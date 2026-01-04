@@ -11,44 +11,48 @@
 <!-- Twitter -->
 
 {% endblock head %} {% block content %}
-<main class="article-list">
-  <div class="ad">{% block ad1 %} {% endblock ad1 %}</div>
-  {% set main_section = config.extra.main_section %} {%- if lang ==
-  config.default_language %} {% set section = get_section(path=main_section ~
-  "/_index.md") %} {%- else %} {% set path = main_section ~ "/_index." ~ lang ~
-  ".md" %} {% set section = get_section(path=path) %} {% endif %} {% set
-  pinned_pages = [] %} {% set other_pages = [] %} {% for post in section.pages
-  %} {% if post.extra.pinned %} {% set_global pinned_pages = pinned_pages |
-  concat(with=post) %} {% else %} {% set_global other_pages = other_pages |
-  concat(with=post) %} {% endif %} {% endfor %} {% set all_pages = pinned_pages
-  | concat(with=other_pages) %} {% for post in all_pages | slice(end=6) %} {{
-  macros::article_block(post=post) }} {% endfor %}
-  <div class="ad">{% block ad2 %} {% endblock ad2 %}</div>
-  {% if section.pages | length > 6 %}
-  <article class="article-block read-more">
-    <a href="{{ section.permalink | safe }}page/2" class="link">
-      <h4 class="heading">More</h4>
-    </a>
-  </article>
-  {% endif %}
-</main>
-{#
-<pre
-  style="
-    font-size: xx-small;
-    height: 50vh;
-    overflow: auto;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    grid-column-start: 1;
-    grid-column-end: -1;
-    background-color: hsla(0, 0%, 90%, 1);
-  "
->
-    <code>
-      {{ __tera_context | escape }}
-    </code>
-  </pre>
-#} {% endblock content %}
+<div class="home-container">
+  <div class="home-intro">
+    <div class="logo-title">
+      <div class="title-inner">
+        {% if config.extra.avatar %}
+        <div class="avatar">
+          <img src="{{ get_url(path=config.extra.avatar) }}" alt="avatar">
+        </div>
+        {% endif %}
+        <div class="title">
+          <h3>{{ config.title }}</h3>
+          <div class="description">
+            <p>{{ config.description }}</p>
+          </div>
+        </div>
+      </div>
+      <ul class="social-links">
+        {%- if config.extra.display_github_link and config.extra.github_url -%}
+        <li><a href="{{ config.extra.github_url | safe }}" aria-label="Go to GitHub profile page"><i class="fab fa-github"></i></a></li>
+        {%- endif -%}
+        {%- if config.extra.display_email_link and config.extra.email_url -%}
+        <li><a href="{{ config.extra.email_url | safe }}" aria-label="Send email"><i class="fas fa-envelope"></i></a></li>
+        {%- endif -%}
+        {%- if config.extra.display_bilibili_link and config.extra.bilibili_url -%}
+        <li><a href="{{ config.extra.bilibili_url | safe }}" aria-label="Go to Bilibili profile page"><i class="fab fa-bilibili"></i></a></li>
+        {%- endif -%}
+        {%- if config.extra.display_twitter_link and config.extra.twitter_url -%}
+        <li><a href="{{ config.extra.twitter_url | safe }}" aria-label="Go to Twitter profile page"><i class="fab fa-twitter"></i></a></li>
+        {%- endif -%}
+        {%- if config.extra.display_facebook_link and config.extra.facebook_url -%}
+        <li><a href="{{ config.extra.facebook_url | safe }}" aria-label="Go to FaceBook profile page"><i class="fab fa-facebook"></i></a></li>
+        {%- endif -%}
+      </ul>
+      
+      <nav class="home-nav">
+        <a href="{{ get_url(path="@/posts/_index.md", lang=lang) }}" {% if current_path is starting_with("/posts") %}class="active"{% endif %}>Posts</a>
+        <a href="{{ get_url(path="@/about/index.md", lang=lang) }}" {% if current_path is starting_with("/about") %}class="active"{% endif %}>About</a>
+        <a href="{{ get_url(path="@/archive/index.md", lang=lang) }}" {% if current_path is starting_with("/archive") %}class="active"{% endif %}>Archives</a>
+        <a href="{{ get_url(path="@/tags/_index.md", lang=lang) }}" {% if current_path is starting_with("/tags") %}class="active"{% endif %}>Categories</a>
+        <a href="{{ get_url(path="@/links/index.md", lang=lang) }}" {% if current_path is starting_with("/links") %}class="active"{% endif %}>Links</a>
+      </nav>
+    </div>
+  </div>
+</div>
+{% endblock content %}

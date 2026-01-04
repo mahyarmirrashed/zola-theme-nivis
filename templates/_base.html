@@ -78,6 +78,7 @@
 
 <body class="body-block">
   <div id="sidebar-mask" onclick="toggleSidebar()"></div>
+  {% if current_path != "/" %}
   <div id="sidebar" class="">
     <div class="logo-title">
       <div class="title-inner">
@@ -115,11 +116,14 @@
       </div>
     </div>
   </div>
+  {% endif %}
 
   <div id="main">
+    {% if current_path != "/" %}
     <div class="page-top animated fadeInDown">
       <nav class="nav">
-        <a href="{{ get_url(path="@/_index.md", lang=lang) }}" {% if current_path == "/" %}class="active"{% endif %}>Home</a>
+        <a href="{{ get_url(path="@/_index.md", lang=lang) }}">Home</a>
+        <a href="{{ get_url(path="@/posts/_index.md", lang=lang) }}" {% if current_path is starting_with("/posts") %}class="active"{% endif %}>Posts</a>
         <a href="{{ get_url(path="@/about/index.md", lang=lang) }}" {% if current_path is starting_with("/about") %}class="active"{% endif %}>About</a>
         <a href="{{ get_url(path="@/archive/index.md", lang=lang) }}" {% if current_path is starting_with("/archive") %}class="active"{% endif %}>Archives</a>
         <a href="{{ get_url(path="@/tags/_index.md", lang=lang) }}" {% if current_path is starting_with("/tags") %}class="active"{% endif %}>Categories</a>
@@ -144,8 +148,9 @@
         </div>
       </div>
     </div>
+    {% endif %}
     <div class="autopagerize_page_element">
-      <div class="content animated fadeIn">
+      <div class="content animated fadeIn {% if current_path == '/' %}home-content{% endif %}">
         {% block content %}{% endblock content %}
       </div>
     </div>

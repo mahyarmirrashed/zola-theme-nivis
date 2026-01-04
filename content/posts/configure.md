@@ -8,7 +8,6 @@ tags = ["guide"]
 
 [extra]
 toc = true
-pinned = true
 +++
 
 ## Math display

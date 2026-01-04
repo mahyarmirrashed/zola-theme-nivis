@@ -15,11 +15,6 @@
     </div>
 
     <div class="meta-line">
-        {% if post.extra.pinned %}
-        <span class="pinned-label"><i class="fa-solid fa-thumbtack"></i></span>
-        <span class="separator">/</span>
-        {% endif %}
-        
         {% if post.date %}
         <span class="date">{{ post.date | date(format="%b. %d, %Y") }}</span>
         {% endif %}

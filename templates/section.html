@@ -33,12 +33,12 @@ config.title }}{% endblock title %} {% block head %}
 
   <div class="ad">{% block ad2 %} {% endblock ad2 %}</div>
 
-  <article class="article-block read-more">
-    <a href="{{ paginator.next }}" class="link">
-      <h4 class="heading">Next</h4>
-    </a>
-  </article>
-
-  {{ macros::paginator_block() }}
+  <div class="pagination-footer">
+    {% if paginator.previous %}
+    <a href="{{ paginator.previous }}" class="prev-link">← Prev</a>
+    {% endif %} {{ macros::paginator_block() }} {% if paginator.next %}
+    <a href="{{ paginator.next }}" class="next-link">Next →</a>
+    {% endif %}
+  </div>
 </main>
 {% endblock content %}

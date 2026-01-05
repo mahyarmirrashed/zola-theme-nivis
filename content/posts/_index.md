@@ -7,6 +7,7 @@ paginate_by = 5
 
 [extra]
 pinned_posts = [
+    "posts/get-start.md",
     "posts/configure.md"
 ]
 +++

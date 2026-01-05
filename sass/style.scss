@@ -1235,7 +1235,6 @@ hr {
     > pre {
         padding: 1em;
         padding-top: 2.8em;
-        overflow-x: auto;
         width: 100%;
         font-size: 0.87em;
         line-height: 1.5;
@@ -1278,6 +1277,8 @@ hr {
             padding: 0;
             border-radius: 0;
             font-size: 1em;
+            display: block;
+            overflow-x: auto;
         }
 
         .z-text { color: var(--z-text); }
@@ -1293,11 +1294,8 @@ hr {
         .z-support { color: var(--z-support); }
 
         @media screen and (max-width: 500px) {
-            width: 100vw;
-            padding: 5vw;
-            border-radius: unset;
-            margin-left: -5vw;
-            margin-right: -5vw;
+            width: 100%;
+            border-radius: 8px;
         }
     }
 

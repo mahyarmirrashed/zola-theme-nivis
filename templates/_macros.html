@@ -1,4 +1,4 @@
-{% macro article_block(post) %}
+{% macro article_block(post, pinned=false) %}
 <article class="article-block">
   {%- if post.extra.link %} {% set link = post.extra.link %} {% else %} {% set
   link = post.permalink %} {% endif %}
@@ -15,6 +15,11 @@
     </div>
 
     <div class="meta-line">
+        {% if pinned %}
+        <span class="pinned-label"><i class="fa-solid fa-thumbtack"></i></span>
+        <span class="separator">/</span>
+        {% endif %}
+        
         {% if post.date %}
         <span class="date">{{ post.date | date(format="%b. %d, %Y") }}</span>
         {% endif %}

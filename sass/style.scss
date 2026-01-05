@@ -408,7 +408,7 @@ hr {
         margin-bottom: 1em;
 
         @media screen and (max-width: 500px) {
-            width: 90vw;
+            width: 100%;
         }
     }
 
@@ -442,7 +442,7 @@ hr {
         padding-bottom: 1em;
 
         @media screen and (max-width: 500px) {
-            width: 90vw;
+            width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
@@ -1672,7 +1672,8 @@ hr {
     width: 100%;
     float: none;
     margin-right: 0;
-    padding-left: 0;
+    padding-left: 5vw;
+    padding-right: 5vw;
   }
 }
 
@@ -1703,7 +1704,7 @@ hr {
     align-items: center;
     height: 100%;
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 960px) {
         display: none;
     }
     
@@ -2159,6 +2160,57 @@ hr {
             color: white;
             border-color: var(--border-color);
             text-decoration: none;
+        }
+    }
+  }
+
+  .sidebar-nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8em;
+    margin-top: 2em;
+    padding-top: 2em;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    }
+
+    @media screen and (max-width: 960px) {
+        display: flex;
+    }
+
+    a {
+        color: var(--text-color-light);
+        font-family: 'Source Han Serif CN VF', serif;
+        font-size: 1.1em;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        position: relative;
+        padding-bottom: 0.8em;
+        
+        &:hover {
+            color: var(--text-color);
+        }
+
+        &:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 1px;
+            background-color: var(--border-color);
+            opacity: 0.3;
         }
     }
   }

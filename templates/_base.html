@@ -106,6 +106,13 @@
       <div class="sidebar-action">
         <a href="{{ get_url(path="@/about/index.md", lang=lang) }}">About Me</a>
       </div>
+      <nav class="sidebar-nav">
+        <a href="{{ get_url(path="@/_index.md", lang=lang) }}">Home</a>
+        <a href="{{ get_url(path="@/posts/_index.md", lang=lang) }}">Posts</a>
+        <a href="{{ get_url(path="@/archive/index.md", lang=lang) }}">Archives</a>
+        <a href="{{ get_url(path="@/tags/_index.md", lang=lang) }}">Categories</a>
+        <a href="{{ get_url(path="@/links/index.md", lang=lang) }}">Links</a>
+      </nav>
     </div>
   </div>
   {% endif %}

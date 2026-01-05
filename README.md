@@ -33,6 +33,4 @@ Move on to the [example site](https://resorie.github.io/zola-theme-nivis/) for m
 
 ## Known Bugs :poop:
 
-- [x] Unable to switch post list pages in homepage
 - [ ] When switching light/dark mode, some elements blink
-- [x] Pinned post logic failing

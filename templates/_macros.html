@@ -35,7 +35,23 @@
     </div>
   </div>
 </article>
-{% endmacro article_block %} {% macro paginator_block() %}
+{% endmacro article_block %} 
+
+{% macro social_icon(name) %}
+    {%- if name == "email" -%}
+        fas fa-envelope
+    {%- elif name == "rss" -%}
+        fas fa-rss
+    {%- elif name == "link" -%}
+        fas fa-link
+    {%- elif name == "globe" -%}
+        fas fa-globe
+    {%- else -%}
+        fab fa-{{ name }}
+    {%- endif -%}
+{% endmacro social_icon %}
+
+{% macro paginator_block() %}
 <aside class="paginator">
   {% if paginator.number_pagers <= 5 %} {% set start = 1 %} {% set end =
   paginator.number_pagers %} {% endif %} {% if paginator.number_pagers > 5 %} {%

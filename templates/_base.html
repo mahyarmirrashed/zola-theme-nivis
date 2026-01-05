@@ -95,21 +95,13 @@
         </div>
       </div>
       <ul class="social-links">
-        {%- if config.extra.display_github_link and config.extra.github_url -%}
-        <li><a href="{{ config.extra.github_url | safe }}" aria-label="Go to GitHub profile page"><i class="fab fa-github"></i></a></li>
-        {%- endif -%}
-        {%- if config.extra.display_email_link and config.extra.email_url -%}
-        <li><a href="{{ config.extra.email_url | safe }}" aria-label="Send email"><i class="fas fa-envelope"></i></a></li>
-        {%- endif -%}
-        {%- if config.extra.display_bilibili_link and config.extra.bilibili_url -%}
-        <li><a href="{{ config.extra.bilibili_url | safe }}" aria-label="Go to Bilibili profile page"><i class="fab fa-bilibili"></i></a></li>
-        {%- endif -%}
-        {%- if config.extra.display_twitter_link and config.extra.twitter_url -%}
-        <li><a href="{{ config.extra.twitter_url | safe }}" aria-label="Go to Twitter profile page"><i class="fab fa-twitter"></i></a></li>
-        {%- endif -%}
-        {%- if config.extra.display_facebook_link and config.extra.facebook_url -%}
-        <li><a href="{{ config.extra.facebook_url | safe }}" aria-label="Go to FaceBook profile page"><i class="fab fa-facebook"></i></a></li>
-        {%- endif -%}
+        {% for link in config.extra.social_links %}
+        <li>
+          <a href="{{ link.url | safe }}" aria-label="{{ link.name | title }}">
+            <i class="{{ macros::social_icon(name=link.name) }}"></i>
+          </a>
+        </li>
+        {% endfor %}
       </ul>
       <div class="sidebar-action">
         <a href="{{ get_url(path="@/about/index.md", lang=lang) }}">About Me</a>

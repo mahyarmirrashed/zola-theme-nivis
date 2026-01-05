@@ -10,6 +10,22 @@ tags = ["guide"]
 toc = true
 +++
 
+## Social Links
+
+Nivis enables you to display some of your social links . Add your social links in `config.toml` according to the following example:
+
+```toml
+[extra]
+social_links = [
+    { name = "github", url = "https://github.com/username" },
+    { name = "email", url = "mailto:your@email.com" },
+    { name = "twitter", url = "https://twitter.com/username" },
+    { name = "rss", url = "/atom.xml" },
+]
+```
+
+Supported icons include most brands (e.g., `github`, `twitter`, `bilibili`) and generic names like `email`, `rss`, `link`, `globe`.
+
 ## Pinned Posts
 
 Nivis allows you to pin special posts so that they are placed at the frontmost of the post list. To pin posts, add the following to the front matter of your `posts/_index.md`:

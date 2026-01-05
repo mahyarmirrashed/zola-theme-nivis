@@ -10,6 +10,17 @@ tags = ["guide"]
 toc = true
 +++
 
+## Pinned Posts
+
+Nivis allows you to pin special posts so that they are placed at the frontmost of the post list. To pin posts, add the following to the front matter of your `posts/_index.md`:
+```toml
+[extra]
+pinned_posts = [
+    "posts/pinned_post1.md",
+    "posts/pinned_post2.md"
+]
+```
+
 ## Math display
 
 Nivis theme supports Mathjax for rendering math contents. Add these contents to your `config.toml` to enable math rendering:
@@ -38,43 +49,6 @@ When building the site, zola would warn that it fails to find a render rule for 
 extra_syntaxes_and_themes = ["themes/nivis/syntaxes/"]
 ```
 
-## About Page
+## Special Pages
 
-Nivis Provides an about page to introduce yourself. Create `content/about/index.md`:
-`````markdown
-+++
-title = "About Me"
-template = "about.html"
-+++
-
-Show yourself! :smile:
-`````
-
-## Friend Links
-
-Nivis suppors a page to display links to your friends' site. First, create `content/links/index.md`:
-```markdown
-+++
-title = "Links"
-template = "links.html"
-+++
-
-Friend Links.
-```
-
-Then, create `data/links.toml`. The theme will generate the page from this file. Follow the syntax:
-```toml
-[[groups]]
-name = "Friends"
-items = [
-    # Add your friends here
-    { name = "Someone", url = "https://example.site/", description = "Description", avatar = "Your Friend's Avatar" },
-]
-
-[[groups]]
-name = "Projects"
-items = [
-    { name = "Zola", url = "https://www.getzola.org/", description = "The static site generator used for this blog.", avatar = "https://avatars.githubusercontent.com/u/43047029" },
-]
-
-```
+Nivis theme provides About page, Archives page, Categories page and Links page to help you fully customize your site. Move on to [Special Pages](@/posts/sp-pages.md) for more information.

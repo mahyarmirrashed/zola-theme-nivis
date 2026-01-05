@@ -6,7 +6,8 @@
       <h1 class="heading">Links</h1>
     </div>
 
-    {% set links_data = load_data(path="data/links.toml") %} {% for group in
+    {% if page.extra.show_content %} {{ page.content | safe }} {% endif %} {%
+    set links_data = load_data(path="data/links.toml") %} {% for group in
     links_data.groups %}
     <div class="links-group">
       <h2 class="group-title">{{ group.name }}</h2>

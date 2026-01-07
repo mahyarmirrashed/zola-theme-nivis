@@ -27,13 +27,17 @@
     --z-variable: #986801;
     --z-storage: #a626a4;
     --z-support: #c18401;
+}
 
-    /* GitHub Alerts */
-    --alert-note: #0969da;
-    --alert-tip: #1a7f37;
-    --alert-important: #8250df;
-    --alert-warning: #9a6700;
-    --alert-caution: #d1242f;
+@mixin responsive-gutter($prop: padding, $extra: 0px) {
+    @media screen and (max-width: 900px) {
+        #{$prop}-left: calc((100vw - 600px)/3 + #{$extra});
+        #{$prop}-right: calc((100vw - 600px)/3);
+    }
+    @media screen and (max-width: 700px) {
+        #{$prop}-left: calc((100vw - 400px)/3 + #{$extra});
+        #{$prop}-right: calc((100vw - 400px)/3);
+    }
 }
 
 [data-theme="dark"] {
@@ -65,28 +69,14 @@
     --z-variable: #e06c75;
     --z-storage: #c678dd;
     --z-support: #e5c07b;
-
-    /* GitHub Alerts */
-    --alert-note: #2f81f7;
-    --alert-tip: #3fb950;
-    --alert-important: #a371f7;
-    --alert-warning: #d29922;
-    --alert-caution: #f85149;
 }
 
 /* Smooth Dark Mode Transition */
-html, body,
-h1, h2, h3, h4, h5, h6, p, a, li, span, 
-div, section, article, aside, nav, header, footer,
-code, pre, blockquote, table, th, td, 
-input, textarea, button {
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
-}
+/* Removed */
 
 a {
     text-decoration: none;
     color: var(--text-color);
-    transition: color 0.3s ease;
 }
 
 a:hover {
@@ -95,16 +85,13 @@ a:hover {
 
 /* MathJax Transitions */
 mjx-container {
-    transition: color 0.3s ease !important;
 }
 
 mjx-container svg {
-    transition: fill 0.3s ease, stroke 0.3s ease !important;
 }
 
 /* KaTeX Transitions */
 .katex {
-    transition: color 0.3s ease;
 }
 
 em, i {
@@ -118,19 +105,7 @@ strong, b {
     // letter-spacing: 0.03em;
 }
 
-h2 {
-    text-align: justify;
-    overflow-wrap: break-word;
-    word-break: normal;
-}
-
-h3 {
-    text-align: justify;
-    overflow-wrap: break-word;
-    word-break: normal;
-}
-
-p {
+h2, h3, p {
     text-align: justify;
     overflow-wrap: break-word;
     word-break: normal;
@@ -172,7 +147,6 @@ dd {
 code {
     font-family: 'Fira Code', monospace;
     font-size: 0.87em;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 hr {
@@ -181,7 +155,6 @@ hr {
     border-style: solid;
     border-width: thin;
     background-color: var(--border-color);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .google-auto-placed {
@@ -199,9 +172,8 @@ hr {
     color: var(--text-color);
     font-family: 'STIX Two Text', 'Source Han Serif CN VF', 'Noto Serif SC', 'Noto Serif CN', serif;
     background-color: var(--bg-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
 
-    h1, h2, h3, h4, h5, h6 {
+    h1, h2, h3, h4 {
         font-family: 'STIX Two Text', 'Noto Serif SC', serif;
     }
 
@@ -286,20 +258,15 @@ hr {
     padding-left: 1em;
     padding-right: 1em;
 
+    @include responsive-gutter(padding);
+
     @media screen and (max-width: 900px) {
         display: grid;
         grid-template-columns: auto 32px;
         align-items: center;
-        padding-left: calc((100vw - 600px)/3);
-        padding-right: calc((100vw - 600px)/3);
         padding-bottom: 1em;
         background-color: var(--sidebar-bg);
         backdrop-filter: blur(1px);
-    }
-
-    @media screen and (max-width: 700px) {
-        padding-left: calc((100vw - 400px)/3);
-        padding-right: calc((100vw - 400px)/3);
     }
 
     @media screen and (max-width: 500px) {
@@ -368,7 +335,7 @@ hr {
         border-radius: 50%;
         background-color: var(--social-bg);
         color: var(--text-color-light);
-        transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+        transition: transform 0.2s ease;
         border: 1px solid var(--social-border);
 
         &:hover {
@@ -474,7 +441,6 @@ hr {
     margin-bottom: 0.2em;
     font-family: 'Ysabeau', 'LXGW Bright', sans-serif;
     font-style: italic;
-    transition: color 0.3s ease;
     
     .separator {
         margin: 0 0.5em;
@@ -542,7 +508,6 @@ hr {
             font-weight: 900;
             margin: 0;
             line-height: 1.2;
-            transition: all 0.2s ease;
             letter-spacing: -0.02em;
             position: relative;
             padding-left: 0.7em;
@@ -556,7 +521,6 @@ hr {
                 height: 0.3em;
                 background-color: var(--border-color);
                 transform: rotate(45deg);
-                transition: all 0.2s ease;
             }
         }
 
@@ -611,7 +575,7 @@ hr {
         font-size: 1em;
         color: var(--text-color);
         text-decoration: none;
-        transition: color 0.3s ease, transform 0.2s ease;
+        transition: transform 0.2s ease;
         display: flex;
         align-items: center;
         gap: 0.3em;
@@ -725,16 +689,10 @@ hr {
     > .article-meta {
         font-size: small;
 
+        @include responsive-gutter(padding);
         @media screen and (max-width: 900px) {
             margin-left: auto;
             margin-right: auto;
-            padding-left: calc((100vw - 600px)/3);
-            padding-right: calc((100vw - 600px)/3);
-        }
-
-        @media screen and (max-width: 700px) {
-            padding-left: calc((100vw - 400px)/3);
-            padding-right: calc((100vw - 400px)/3);
         }
 
         @media screen and (max-width: 500px) {
@@ -745,16 +703,10 @@ hr {
     }
 
     > .article-action-block {
+        @include responsive-gutter(padding);
         @media screen and (max-width: 900px) {
             margin-left: auto;
             margin-right: auto;
-            padding-left: calc((100vw - 600px)/3);
-            padding-right: calc((100vw - 600px)/3);
-        }
-
-        @media screen and (max-width: 700px) {
-            padding-left: calc((100vw - 400px)/3);
-            padding-right: calc((100vw - 400px)/3);
         }
 
         @media screen and (max-width: 500px) {
@@ -771,16 +723,10 @@ hr {
         margin-bottom: 2em;
         color: var(--text-color-light);
 
+        @include responsive-gutter(padding);
         @media screen and (max-width: 900px) {
-            padding-left: calc((100vw - 600px)/3);
-            padding-right: calc((100vw - 600px)/3);
             margin-left: auto;
             margin-right: auto;
-        }
-
-        @media screen and (max-width: 700px) {
-            padding-left: calc((100vw - 400px)/3);
-            padding-right: calc((100vw - 400px)/3);
         }
 
         @media screen and (max-width: 500px) {
@@ -861,17 +807,8 @@ hr {
         margin-bottom: 2em;
         border-left: 4px solid var(--border-color);
         line-height: 1.6;
-        transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 
-        @media screen and (max-width: 900px) {
-            margin-left: calc((100vw - 600px)/3);
-            margin-right: calc((100vw - 600px)/3);
-        }
-
-        @media screen and (max-width: 700px) {
-            margin-left: calc((100vw - 400px)/3);
-            margin-right: calc((100vw - 400px)/3);
-        }
+        @include responsive-gutter(margin);
 
         @media screen and (max-width: 500px) {
             width: 90vw;
@@ -889,7 +826,6 @@ hr {
         display: inline-block;
         width: 100%;
         position: relative;
-        transition: border-color 0.3s ease;
 
         &::before {
             content: "#";
@@ -898,19 +834,12 @@ hr {
             font-weight: normal;
             font-size: 0.9em;
             letter-spacing: -2px;
-            transition: color 0.3s ease;
         }
 
+        @include responsive-gutter(padding);
         @media screen and (max-width: 900px) {
-            padding-left: calc((100vw - 600px)/3);
-            padding-right: calc((100vw - 600px)/3);
             margin-left: auto;
             margin-right: auto;
-        }
-
-        @media screen and (max-width: 700px) {
-            padding-left: calc((100vw - 400px)/3);
-            padding-right: calc((100vw - 400px)/3);
         }
 
         @media screen and (max-width: 500px) {
@@ -927,7 +856,6 @@ hr {
         font-size: 1.4em;
         position: relative;
         border-bottom: 2px solid var(--social-bg);
-        transition: border-color 0.3s ease;
 
         &::before {
             content: "##";
@@ -936,19 +864,12 @@ hr {
             font-weight: normal;
             font-size: 0.9em;
             letter-spacing: -2px;
-            transition: color 0.3s ease;
         }
 
+        @include responsive-gutter(padding);
         @media screen and (max-width: 900px) {
-            padding-left: calc((100vw - 600px)/3);
-            padding-right: calc((100vw - 600px)/3);
             margin-left: auto;
             margin-right: auto;
-        }
-
-        @media screen and (max-width: 700px) {
-            padding-left: calc((100vw - 400px)/3);
-            padding-right: calc((100vw - 400px)/3);
         }
 
         @media screen and (max-width: 500px) {
@@ -966,7 +887,6 @@ hr {
         position: relative;
         font-style: italic;
         color: var(--text-color-light);
-        transition: color 0.3s ease;
 
         &::before {
             content: "###";
@@ -979,16 +899,10 @@ hr {
             transition: color 0.3s ease;
         }
 
+        @include responsive-gutter(padding);
         @media screen and (max-width: 900px) {
-            padding-left: calc((100vw - 600px)/3);
-            padding-right: calc((100vw - 600px)/3);
             margin-left: auto;
             margin-right: auto;
-        }
-
-        @media screen and (max-width: 700px) {
-            padding-left: calc((100vw - 400px)/3);
-            padding-right: calc((100vw - 400px)/3);
         }
 
         @media screen and (max-width: 500px) {
@@ -1002,16 +916,10 @@ hr {
         line-height: 1.6em;
         margin-bottom: 0.8rem;
 
+        @include responsive-gutter(padding);
         @media screen and (max-width: 900px) {
-            padding-left: calc((100vw - 600px)/3);
-            padding-right: calc((100vw - 600px)/3);
             margin-left: auto;
             margin-right: auto;
-        }
-
-        @media screen and (max-width: 700px) {
-            padding-left: calc((100vw - 400px)/3);
-            padding-right: calc((100vw - 400px)/3);
         }
 
         @media screen and (max-width: 500px) {
@@ -1055,15 +963,7 @@ hr {
         position: relative;
         transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
 
-        @media screen and (max-width: 900px) {
-            margin-left: calc((100vw - 600px)/3);
-            margin-right: calc((100vw - 600px)/3);
-        }
-
-        @media screen and (max-width: 700px) {
-            margin-left: calc((100vw - 400px)/3);
-            margin-right: calc((100vw - 400px)/3);
-        }
+        @include responsive-gutter(margin);
 
         @media screen and (max-width: 500px) {
             width: 90vw;
@@ -1148,16 +1048,10 @@ hr {
     }
 
     > dl {
+        @include responsive-gutter(padding);
         @media screen and (max-width: 900px) {
-            padding-left: calc((100vw - 600px)/3);
-            padding-right: calc((100vw - 600px)/3);
             margin-left: auto;
             margin-right: auto;
-        }
-
-        @media screen and (max-width: 700px) {
-            padding-left: calc((100vw - 400px)/3);
-            padding-right: calc((100vw - 400px)/3);
         }
 
         @media screen and (max-width: 500px) {
@@ -1176,16 +1070,10 @@ hr {
     }
 
     > ul {
+        @include responsive-gutter(padding, 2em);
         @media screen and (max-width: 900px) {
-            padding-left: calc(((100vw - 600px)/3) + 2em);
-            padding-right: calc((100vw - 600px)/3);
             margin-left: auto;
             margin-right: auto;
-        }
-
-        @media screen and (max-width: 700px) {
-            padding-left: calc(((100vw - 400px)/3) + 2em);
-            padding-right: calc((100vw - 400px)/3);
         }
 
         @media screen and (max-width: 500px) {
@@ -1209,16 +1097,10 @@ hr {
     }
 
     > ol {
+        @include responsive-gutter(padding, 2em);
         @media screen and (max-width: 900px) {
-            padding-left: calc(((100vw - 600px)/3) + 2em);
-            padding-right: calc((100vw - 600px)/3);
             margin-left: auto;
             margin-right: auto;
-        }
-
-        @media screen and (max-width: 700px) {
-            padding-left: calc(((100vw - 600px)/3) + 2em);
-            padding-right: calc((100vw - 400px)/3);
         }
 
         @media screen and (max-width: 500px) {
@@ -1369,9 +1251,8 @@ hr {
         margin-bottom: 1em;
         border-radius: 4px;
 
+        @include responsive-gutter(padding);
         @media screen and (max-width: 900px) {
-            padding-left: calc((100vw - 600px)/3);
-            padding-right: calc((100vw - 600px)/3);
             height: 50vw;
             margin-left: auto;
             margin-right: auto;
@@ -1393,9 +1274,8 @@ hr {
         margin-left: auto;
         margin-right: auto;
 
+        @include responsive-gutter(padding);
         @media screen and (max-width: 900px) {
-            padding-left: calc((100vw - 600px)/3);
-            padding-right: calc((100vw - 600px)/3);
             width: 100%;
         }
 
@@ -1411,7 +1291,6 @@ hr {
         background-color: var(--table-header-bg);
         color: var(--text-color);
         padding: 1em;
-        transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     > table td {
@@ -1419,7 +1298,6 @@ hr {
         color: var(--text-color);
         padding: 1em;
         border: 1px solid var(--border-color);
-        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
 
     > table {
@@ -1569,60 +1447,12 @@ hr {
 
 /*animation starts*/
 .animated {
-  -webkit-animation-fill-mode: both;
-  -moz-animation-fill-mode: both;
-  -ms-animation-fill-mode: both;
-  -o-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-duration: 1s;
-  -moz-animation-duration: 1s;
-  -ms-animation-duration: 1s;
-  -o-animation-duration: 1s;
   animation-duration: 1s;
 }
 
 .animated.hinge {
-  -webkit-animation-duration: 1s;
-  -moz-animation-duration: 1s;
-  -ms-animation-duration: 1s;
-  -o-animation-duration: 1s;
   animation-duration: 1s;
-}
-
-@-webkit-keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(-20px);
-  }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-  }
-}
-
-@-moz-keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -moz-transform: translateY(-20px);
-  }
-
-  100% {
-    opacity: 1;
-    -moz-transform: translateY(0);
-  }
-}
-
-@-o-keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -o-transform: translateY(-20px);
-  }
-
-  100% {
-    opacity: 1;
-    -o-transform: translateY(0);
-  }
 }
 
 @keyframes fadeInDown {
@@ -1650,16 +1480,10 @@ hr {
 }
 
 .fadeInDown {
-  -webkit-animation-name: fadeInDown;
-  -moz-animation-name: fadeInDown;
-  -o-animation-name: fadeInDown;
   animation-name: fadeInDown;
 }
 
 .fadeIn {
-  -webkit-animation-name: fadeIn;
-  -moz-animation-name: fadeIn;
-  -o-animation-name: fadeIn;
   animation-name: fadeIn;
 }
 
@@ -1693,13 +1517,11 @@ hr {
   height: 64px;
   background-color: var(--sidebar-bg);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 4vw;
-  transition: all 0.3s ease;
 
   @media screen and (max-width: 960px) {
     padding: 0 20px;
@@ -1812,7 +1634,7 @@ hr {
         z-index: 10;
         opacity: 0;
         transform: translateY(-10px);
-        transition: opacity 0.2s, transform 0.2s, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        transition: opacity 0.2s, transform 0.2s;
         pointer-events: none;
         
         a {
@@ -1822,7 +1644,6 @@ hr {
           color: var(--text-color);
           white-space: nowrap;
           text-decoration: none;
-          transition: background-color 0.2s;
           
           &:hover {
             background-color: var(--social-bg);
@@ -1938,10 +1759,6 @@ hr {
                 user-select: none;
                 margin-bottom: 0.5em;
 
-                &::-webkit-details-marker {
-                    display: none;
-                }
-
                 &::after {
                     content: "expand +";
                     font-size: 0.9em;
@@ -1982,7 +1799,6 @@ hr {
                 a {
                     text-decoration: none;
                     color: var(--text-color-light);
-                    transition: color 0.2s;
                     display: block;
                     font-family: 'STIX Two Text', 'Noto Serif SC', serif;
                     font-weight: 500;
@@ -2014,7 +1830,7 @@ hr {
     z-index: 3; /* Below sidebar (4), above content */
     display: none;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out, background-color 0.3s ease;
+    transition: opacity 0.3s ease-in-out;
 
     &.open {
         display: block;
@@ -2035,7 +1851,7 @@ hr {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+  transition: transform 0.3s ease-in-out;
   padding-right: 4vw;
   box-sizing: border-box;
 
@@ -2132,7 +1948,7 @@ hr {
       a {
         color: var(--text-color-light);
         font-size: 1.2em;
-        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s ease;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -2158,7 +1974,6 @@ hr {
         color: var(--text-color-light);
         border: 1px solid var(--border-color);
         border-radius: 4px;
-        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         font-size: 0.9em;
         letter-spacing: 1px;
         
@@ -2200,7 +2015,6 @@ hr {
         font-family: 'Source Han Serif CN VF', serif;
         font-size: 1.1em;
         text-decoration: none;
-        transition: color 0.2s ease;
         position: relative;
         padding-bottom: 0.8em;
         
@@ -2256,7 +2070,6 @@ hr {
             border-radius: 50%;
             padding: 4px;
             background-color: var(--btn-bg);
-            transition: background-color 0.3s;
             
             &:hover {
                 background-color: var(--btn-hover);
@@ -2323,7 +2136,7 @@ sup.footnote-reference {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.2s, box-shadow 0.2s;
     background-color: var(--bg-color);
 
     &:hover {
@@ -2380,16 +2193,10 @@ sup.footnote-reference {
     margin-bottom: 4em;
 
     /* Responsive margins matching other content */
+    @include responsive-gutter(padding);
     @media screen and (max-width: 900px) {
-        padding-left: calc((100vw - 600px)/3);
-        padding-right: calc((100vw - 600px)/3);
         margin-left: auto;
         margin-right: auto;
-    }
-
-    @media screen and (max-width: 700px) {
-        padding-left: calc((100vw - 400px)/3);
-        padding-right: calc((100vw - 400px)/3);
     }
 
     @media screen and (max-width: 500px) {
@@ -2430,7 +2237,7 @@ sup.footnote-reference {
         border: 1px solid var(--border-color);
         border-radius: 12px;
         background-color: var(--bg-color);
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         height: 100%;
         box-sizing: border-box;
         position: relative;
@@ -2455,7 +2262,6 @@ sup.footnote-reference {
                 object-fit: cover;
                 border-radius: 50%;
                 border: 2px solid var(--border-color);
-                transition: border-color 0.3s;
                 background-color: var(--bg-color);
             }
         }
@@ -2518,7 +2324,6 @@ sup.footnote-reference {
     border-radius: 6px;
     text-decoration: none;
     color: var(--text-color);
-    transition: color 0.3s ease;
     font-family: 'Ysabeau', 'LXGW Bright', sans-serif;
     font-style: italic;
     font-size: 1em;
@@ -2534,7 +2339,7 @@ sup.footnote-reference {
         margin-right: 0.2em;
         font-style: normal;
         opacity: 0.6;
-        transition: opacity 0.3s ease, color 0.3s ease;
+        transition: opacity 0.3s ease;
     }
 
     &:hover .category-prefix {
@@ -2544,7 +2349,6 @@ sup.footnote-reference {
     .category-name {
         font-weight: normal;
         border-bottom: 1px solid transparent;
-        transition: border-color 0.3s ease;
     }
 
     &:hover .category-name {
@@ -2559,7 +2363,6 @@ sup.footnote-reference {
         padding: 0;
         font-weight: bold;
         opacity: 0.8;
-        transition: all 0.3s ease;
         position: relative;
         top: -0.3em;
     }
@@ -2663,7 +2466,7 @@ sup.footnote-reference {
                 a {
                     color: var(--text-color-light); // Match sidebar color
                     font-size: 1.2em;
-                    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
                     display: inline-flex;
                     align-items: center;
                     justify-content: center;
@@ -2781,7 +2584,6 @@ sup.footnote-reference {
         width: 2px;
         background-color: var(--border-color);
         opacity: 0.6;
-        transition: background-color 0.3s ease;
     }
 
     // The Top Cap
@@ -2797,7 +2599,6 @@ sup.footnote-reference {
         background-color: var(--bg-color);
         z-index: 2;
         box-shadow: 0 0 0 4px var(--bg-color);
-        transition: border-color 0.3s ease;
     }
 }
 
@@ -2850,7 +2651,6 @@ sup.footnote-reference {
         border-radius: 50%;
         z-index: 1;
         box-shadow: 0 0 0 4px var(--bg-color); // Clear the line behind
-        transition: border-color 0.3s ease, background-color 0.3s ease;
     }
 
     .year-label {
@@ -2929,7 +2729,6 @@ sup.footnote-reference {
             font-style: italic;
             font-size: 0.9em;
             color: var(--text-color-light);
-            transition: color 0.3s ease, transform 0.2s ease;
             display: inline-block;
         }
     }
@@ -2940,7 +2739,6 @@ sup.footnote-reference {
         color: var(--text-color);
         text-decoration: none;
         line-height: 1.4;
-        transition: color 0.3s ease, transform 0.2s ease;
         border-bottom: 1px solid transparent;
         display: inline-block;
 
@@ -2969,4 +2767,10 @@ sup.footnote-reference {
             margin-bottom: 0.2em;
         }
     }
+}
+
+/* Prevent transitions during page load */
+.preload * {
+    transition: none !important;
+    -webkit-transition: none !important;
 }

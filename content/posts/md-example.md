@@ -78,7 +78,7 @@ Markdown renders math using LaTeX syntax. Refer to the [configuration post](@/po
 **Inline:** The mass-energy equivalence is `$e=mc^2$`.
 
 **Block (Display):**
-```math-display
+```
 $$
 f(x)=\int_{-\infty}^\infty \hat f(\xi)e^{2\pi i\xi x}d\xi
 $$

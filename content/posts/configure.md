@@ -52,7 +52,7 @@ After adding or changing your post, run `themes/nivis/scripts/wrap_math.py` to p
 This is an inline math example: `$e^{\pi i}=-1$`.
 
 And this is a display math example:
-```math-display
+```
 $$
 \sum_{i=1}^n i^3=\frac{n^2(n+1)^2}{4}
 $$

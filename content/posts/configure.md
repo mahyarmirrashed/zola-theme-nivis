@@ -52,17 +52,17 @@ After adding or changing your post, run `themes/nivis/scripts/wrap_math.py` to p
 This is an inline math example: `$e^{\pi i}=-1$`.
 
 And this is a display math example:
-```
+```math-display
 $$
 \sum_{i=1}^n i^3=\frac{n^2(n+1)^2}{4}
 $$
 ```
 `````
 
-When building the site, zola would warn that it fails to find a render rule for language `math-display`. Of course, we don't need these warnings. Add the following lines to your `config.toml` to get rid of these warnings:
+To ensure the code block is rendered correctly, we need to tell zola to treat `math-display` as a language. Add the following to your `config.toml`:
 ```toml
-[markdown]
-extra_syntaxes_and_themes = ["themes/nivis/syntaxes/"]
+[markdown.highlighting]
+extra_grammars = [ "themes/nivis/syntaxes/math-display.json" ]
 ```
 
 ## Special Pages

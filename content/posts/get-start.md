@@ -7,8 +7,9 @@ date = 1980-01-01
 tags = ["start"]
 
 [extra]
-toc = false
 +++
+
+## Installation
 
 Use `git submodule` to add the theme to your site:
 ```bash
@@ -31,6 +32,46 @@ If you want to update the nivis theme, run the following command:
 git submodule update --remote --merge
 ```
 
-Move on to [Configuraion](@/posts/configure.md) for configuraions. 
+## Basic Configs
+
+The following is a basic template for your `config.toml`:
+```toml
+base_url = "https://yours.site"
+
+title = "Your Title"
+description = "Your blog"
+
+theme = "nivis"
+
+generate_feeds = true
+feed_filenames = ["rss.xml", "atom.xml"]
+
+compile_sass = true
+
+taxonomies = [{ name = "tags", paginate_by = 5 }]
+
+[markdown]
+render_emoji = true
+github_alerts = true
+bottom_footnotes = true
+
+[markdown.highlighting]
+style = "class"
+light_theme = "one-light"
+dark_theme = "one-dark-pro"
+
+[extra]
+main_section = "posts"
+avatar = "images/avatar.jpeg" # In static/ folder
+
+# Social links
+social_links = [
+    { name = "github", url = "https://github.com/your_username" },
+]
+```
+
+Move on to [Configuraion](@/posts/configure.md) for advanced configuraions. 
+
+---
 
 If you like this theme, please give it a star on [github](https://github.com/Resorie/zola-theme-nivis). :kissing_heart:

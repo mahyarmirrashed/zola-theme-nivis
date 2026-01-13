@@ -46,7 +46,6 @@ bottom_footnotes = true
 render_emoji = true
 
 [markdown.highlighting]
-error_on_missing_language = false
 style = "class"
 light_theme = "one-light"
 dark_theme = "one-dark-pro"

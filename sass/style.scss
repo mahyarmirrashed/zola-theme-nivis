@@ -486,6 +486,7 @@ hr {
                 height: 0.3em;
                 background-color: var(--border-color);
                 transform: rotate(45deg);
+                transition: transform 0.3s ease, background-color 0.3s ease;
             }
         }
 
@@ -2641,7 +2642,6 @@ sup.footnote-reference {
         width: 1em;
         height: 1px;
         background-color: var(--border-color);
-        transition: background-color 0.3s ease;
     }
 
     // The Date Dot
@@ -2655,7 +2655,7 @@ sup.footnote-reference {
         background-color: var(--border-color);
         border-radius: 50%;
         z-index: 1;
-        transition: background-color 0.3s ease, transform 0.2s ease;
+        transition: transform 0.2s ease;
         box-shadow: 0 0 0 2px var(--bg-color);
     }
 
@@ -2686,6 +2686,7 @@ sup.footnote-reference {
             font-size: 0.9em;
             color: var(--text-color-light);
             display: inline-block;
+            transition: transform 0.2s ease;
         }
     }
 
@@ -2697,6 +2698,7 @@ sup.footnote-reference {
         line-height: 1.4;
         border-bottom: 1px solid transparent;
         display: inline-block;
+        transition: transform 0.2s ease;
 
         &:hover {
             border-color: var(--text-color);

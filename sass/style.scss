@@ -1104,7 +1104,7 @@ hr {
         }
     }
 
-    > pre {
+    pre {
         padding: 1em;
         padding-top: 2.8em;
         width: 100%;
@@ -2829,12 +2829,17 @@ sup.footnote-reference {
     }
 
     .collapse-content {
-        padding: 0.5em 0 1em 0;
+        padding: 0.5em 3em 1em 0;
         
         > *:first-child { margin-top: 0; }
         > *:last-child { margin-bottom: 0; }
 
         animation: details-show 0.3s ease-in-out;
+        
+        /* Ensure code blocks inherit correct styles */
+        pre {
+            width: 100%;
+        }
     }
 }
 

@@ -2786,7 +2786,7 @@ sup.footnote-reference {
     padding-left: 1em;
 
     .collapse-summary {
-        font-family: 'Fira Code', monospace;
+        font-family: "Noto Sans SC", sans-serif;
         padding: 0.5em 0;
         cursor: pointer;
         display: flex;
@@ -2839,12 +2839,6 @@ sup.footnote-reference {
         /* Ensure code blocks inherit correct styles */
         pre {
             width: 100%;
-        }
-
-        /* Fix line-height for paragraphs to match article content */
-        p {
-            line-height: 1.6em;
-            margin-bottom: 0.8rem;
         }
     }
 }

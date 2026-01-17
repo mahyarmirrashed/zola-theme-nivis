@@ -2840,6 +2840,12 @@ sup.footnote-reference {
         pre {
             width: 100%;
         }
+
+        /* Fix line-height for paragraphs to match article content */
+        p {
+            line-height: 1.6em;
+            margin-bottom: 0.8rem;
+        }
     }
 }
 

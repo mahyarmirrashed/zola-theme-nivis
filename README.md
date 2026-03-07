@@ -1,4 +1,6 @@
-Nivis: A clean zola theme for bloggers.
+# Nivis
+
+A clean zola theme for bloggers.
 
 ![screenshot](screenshot.png)
 

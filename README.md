@@ -20,7 +20,7 @@ This theme is inspired by (and derived from) themes [Float](https://float-theme.
 Use `git submodule` to add the theme to your site:
 
 ```bash
-git submodule add -b master --depth=1 https://github.com/Resorie/zola-theme-nivis.git themes/nivis/
+git submodule add -b main --depth=1 https://github.com/Resorie/zola-theme-nivis.git themes/nivis/
 git submodule update --init --recursive
 ```
 

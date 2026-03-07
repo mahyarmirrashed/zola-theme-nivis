@@ -34,9 +34,3 @@ cp -r themes/nivis/content content
 ```
 
 Move on to the [example site](https://resorie.github.io/zola-theme-nivis/) for more info. Enjoy it! :kissing_heart:
-
-## Todo :clipboard:
-
-- [ ] Add transition when switching light/dark mode
-- [ ] Better special page customization
-- [ ] Minimize web resources

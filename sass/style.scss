@@ -1348,28 +1348,7 @@ hr {
   }
 }
 
-.article-action-block {
-  > .addtoany-block {
-    margin: 1em auto 1em auto;
-  }
-}
 
-.addtoany-block {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1vw;
-
-  > a > .button {
-    border-radius: 4px;
-    width: 100%;
-    height: 32px;
-    background-color: hsla(0, 0%, 60%, 1);
-  }
-
-  > a > .button:hover {
-    background-color: hsla(0, 0%, 50%, 1);
-  }
-}
 
 .footer-container {
   background-color: var(--code-bg);
@@ -1908,7 +1887,7 @@ hr {
   &::after {
     content: "";
     position: absolute;
-    right: 2vw;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     height: 60%;
@@ -1938,6 +1917,7 @@ hr {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 1rem;
 
     .title-inner {
       width: 100%;
@@ -1987,13 +1967,16 @@ hr {
   .social-links {
     list-style: none;
     padding: 0;
-    text-align: center;
     margin-top: 2em;
     margin-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 1.25em;
+    row-gap: 0.6em;
 
     li {
-      display: inline-block;
-      margin: 0 0.8em;
+      margin: 0;
 
       a {
         color: var(--text-color-light);
@@ -2109,29 +2092,7 @@ hr {
   }
 }
 
-.addtoany-block {
-  display: flex;
-  gap: 10px;
-  margin-top: 1em;
 
-  a {
-    display: block;
-    width: 32px;
-    height: 32px;
-
-    .button {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      padding: 4px;
-      background-color: var(--btn-bg);
-
-      &:hover {
-        background-color: var(--btn-hover);
-      }
-    }
-  }
-}
 
 /* KaTeX Fixes */
 .katex {

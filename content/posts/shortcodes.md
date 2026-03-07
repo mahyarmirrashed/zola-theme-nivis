@@ -16,6 +16,7 @@ Nivis provides various shortcodes for you to use in your posts.
 To place an image in your post with alt text and message.
 
 Template:
+
 ```markdown
 {{/* image(src="img src", alt="alt text", caption="caption text") */}}
 ```

@@ -15,18 +15,20 @@ Nivis theme provides About page, Archives page, Categories page and Links page t
 ## About Page
 
 Nivis provides an about page to introduce yourself. Create `content/about/index.md`:
-`````markdown
+
+```markdown
 +++
 title = "About Me"
 template = "about.html"
 +++
 
 Show yourself! :smile:
-`````
+```
 
 ## Archive Page
 
 Nivis shows all your posts sorted by publish time in the archives page. Create `content/archive/index.md`:
+
 ```markdown
 +++
 title = "Archives"
@@ -37,6 +39,7 @@ template = "archive.html"
 ## Categories Page
 
 Nivis lists all your post tags in categories page. Clicking on the tag directs you to the lists of all posts with the tag. Create `content/tags/_index.md`:
+
 ```markdown
 +++
 title = "Categories"
@@ -47,18 +50,20 @@ template = "tags/list.html"
 ## Friend Links
 
 Nivis suppors a page to display links to your friends' site. First, create `content/links/index.md`:
+
 ```markdown
 +++
 title = "Links"
 template = "links.html"
 +++
 
-Friend Links. 
+Friend Links.
 
 The content here will be shown if `extra.show_content` is set to true in the front matter.
 ```
 
 Then, create `data/links.toml`. The theme will generate the page from this file. Follow the syntax:
+
 ```toml
 [[groups]]
 name = "Friends"

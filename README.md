@@ -18,17 +18,20 @@ This theme is inspired by (and derived from) themes [Float](https://float-theme.
 ## Getting Started :rocket:
 
 Use `git submodule` to add the theme to your site:
+
 ```bash
 git submodule add -b master --depth=1 https://github.com/Resorie/zola-theme-nivis.git themes/nivis/
 git submodule update --init --recursive
 ```
 
 Then, change your theme config in `config.toml`:
+
 ```toml
 theme = "nivis"
 ```
 
 Start your site by copying the example content into your site folder:
+
 ```bash
 cp -r themes/nivis/content content
 ```

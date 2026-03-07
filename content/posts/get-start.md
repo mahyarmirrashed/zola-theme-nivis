@@ -12,22 +12,26 @@ tags = ["start"]
 ## Installation
 
 Use `git submodule` to add the theme to your site:
+
 ```bash
 git submodule add -b master --depth=1 https://github.com/Resorie/zola-theme-nivis.git themes/nivis/
 git submodule update --init --recursive
 ```
 
 Then, change your theme config in `config.toml`:
+
 ```toml
 theme = "nivis"
 ```
 
 Start your site by copying the example content into your site folder:
+
 ```bash
 cp -r themes/nivis/content content
 ```
 
 If you want to update the nivis theme, run the following command:
+
 ```bash
 git submodule update --remote --merge
 ```
@@ -35,6 +39,7 @@ git submodule update --remote --merge
 ## Basic Configs
 
 The following is a basic template for your `config.toml`:
+
 ```toml
 base_url = "https://yours.site"
 
@@ -70,7 +75,7 @@ social_links = [
 ]
 ```
 
-Move on to [Configuraion](@/posts/configure.md) for advanced configuraions. 
+Move on to [Configuraion](@/posts/configure.md) for advanced configuraions.
 
 ---
 

@@ -1,50 +1,76 @@
-{% extends "_base.html" %} {% block title %}{{ config.title }}{% endblock title
-%} {% block head %}
-<!-- Primary Meta Tags -->
-<meta name="description" content="{{ config.description }}" />
+{% extends "_base.html" %}
+{% block title %}
+  {{ config.title }}
+{% endblock title %}
+{% block head %}
+  <!-- Primary Meta Tags -->
+  <meta name="description" content="{{ config.description }}" />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:title" content="{{ config.title }}" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="{{ config.base_url | safe }}" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="{{ config.title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ config.base_url | safe }}" />
 
-<!-- Twitter -->
-
-{% endblock head %} {% block content %}
-<div class="home-container">
-  <div class="home-intro">
-    <div class="logo-title">
-      <div class="title-inner">
-        {% if config.extra.avatar %}
-        <div class="avatar">
-          <img src="{{ get_url(path=config.extra.avatar) }}" alt="avatar">
-        </div>
-        {% endif %}
-        <div class="title">
-          <h3>{{ config.title }}</h3>
-          <div class="description">
-            <p>{{ config.description }}</p>
+  <!-- Twitter -->
+{% endblock head %}
+{% block content %}
+  <div class="home-container">
+    <div class="home-intro">
+      <div class="logo-title">
+        <div class="title-inner">
+          {% if config.extra.avatar %}
+            <div class="avatar">
+              <img src="{{ get_url(path=config.extra.avatar) }}" alt="avatar" />
+            </div>
+          {% endif %}
+          <div class="title">
+            <h3>{{ config.title }}</h3>
+            <div class="description">
+              <p>{{ config.description }}</p>
+            </div>
           </div>
         </div>
+        <ul class="social-links">
+          {% for link in config.extra.social_links %}
+            <li>
+              <a
+                href="{{ link.url | safe }}"
+                aria-label="{{ link.name | title }}"
+              >
+                <i class="{{ macros::social_icon(name=link.name) }}"></i>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <nav class="home-nav">
+          <a
+            href="{{ get_url(path="@/posts/_index.md", lang=lang) }}"
+            {% if current_path is starting_with("/posts") %}class="active"{% endif %}
+            >Posts</a
+          >
+          <a
+            href="{{ get_url(path="@/about/index.md", lang=lang) }}"
+            {% if current_path is starting_with("/about") %}class="active"{% endif %}
+            >About</a
+          >
+          <a
+            href="{{ get_url(path="@/archive/index.md", lang=lang) }}"
+            {% if current_path is starting_with("/archive") %}class="active"{% endif %}
+            >Archives</a
+          >
+          <a
+            href="{{ get_url(path="@/tags/_index.md", lang=lang) }}"
+            {% if current_path is starting_with("/tags") %}class="active"{% endif %}
+            >Categories</a
+          >
+          <a
+            href="{{ get_url(path="@/links/index.md", lang=lang) }}"
+            {% if current_path is starting_with("/links") %}class="active"{% endif %}
+            >Links</a
+          >
+        </nav>
       </div>
-      <ul class="social-links">
-        {% for link in config.extra.social_links %}
-        <li>
-          <a href="{{ link.url | safe }}" aria-label="{{ link.name | title }}">
-            <i class="{{ macros::social_icon(name=link.name) }}"></i>
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-      
-      <nav class="home-nav">
-        <a href="{{ get_url(path="@/posts/_index.md", lang=lang) }}" {% if current_path is starting_with("/posts") %}class="active"{% endif %}>Posts</a>
-        <a href="{{ get_url(path="@/about/index.md", lang=lang) }}" {% if current_path is starting_with("/about") %}class="active"{% endif %}>About</a>
-        <a href="{{ get_url(path="@/archive/index.md", lang=lang) }}" {% if current_path is starting_with("/archive") %}class="active"{% endif %}>Archives</a>
-        <a href="{{ get_url(path="@/tags/_index.md", lang=lang) }}" {% if current_path is starting_with("/tags") %}class="active"{% endif %}>Categories</a>
-        <a href="{{ get_url(path="@/links/index.md", lang=lang) }}" {% if current_path is starting_with("/links") %}class="active"{% endif %}>Links</a>
-      </nav>
     </div>
   </div>
-</div>
 {% endblock content %}
